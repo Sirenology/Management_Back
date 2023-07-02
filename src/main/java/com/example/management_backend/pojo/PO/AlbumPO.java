@@ -1,36 +1,41 @@
 package com.example.management_backend.pojo.PO;
 
+
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.apache.ibatis.annotations.Options;
 
 import java.io.Serializable;
+import java.util.Date;
+
 
 /**
- * 歌曲表
+ * 专辑表
  *
- * @TableName song
+ * @TableName album
  */
-@TableName(value = "song")
+
+@TableName(value = "album")
 @Data
 @ToString
 @EqualsAndHashCode
-public class SongPO implements Serializable {
+public class AlbumPO implements Serializable{
     /**
-     * 歌曲id
+     * 专辑id
      */
     @TableId(type = IdType.AUTO)
-    private Integer songId;
-    
+    private Integer albumId;
+
+
     /**
-     * 歌曲名
+     * 专辑名
      */
     private String title;
-    
 
 
+    private String albumAvater;
 }

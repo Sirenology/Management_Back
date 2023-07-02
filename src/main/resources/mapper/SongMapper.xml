@@ -6,13 +6,10 @@
 
     <resultMap id="BaseResultMap" type="com.example.management_backend.pojo.PO.SongPO">
         <id property="songId" column="songId" jdbcType="INTEGER"/>
-        <result property="title" column="title" jdbcType="VARCHAR"/>
-        <result property="artist" column="artist" jdbcType="VARCHAR"/>
-        <result property="album" column="album" jdbcType="VARCHAR"/>
+        <result property="title" column="title" jdbcType="CHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        songId,title,artist,
-        album
+        songId,title
     </sql>
 </mapper>

@@ -27,9 +27,20 @@ public class SongServiceImpl implements SongService {
         for (SongPO songPO : songPOList) {
             SongVO songVO = new SongVO();
             BeanUtils.copyProperties(songPO, songVO);
+             songVOList.add(songVO);
+        }
+        return songVOList;
+    }
+    @Override
+    public List<SongVO> getAllSongListInfoByUserId(Integer UserId){
+        log.info("正在进行getAllSongListInfoByUser操作。");
+        List<SongPO> songPOList = SongMapper.selectList(null);
+        List<SongVO> songVOList = new ArrayList<>();
+        for (SongPO songPO : songPOList) {
+            SongVO songVO = new SongVO();
+            BeanUtils.copyProperties(songPO, songVO);
             songVOList.add(songVO);
         }
         return songVOList;
     }
-
 }

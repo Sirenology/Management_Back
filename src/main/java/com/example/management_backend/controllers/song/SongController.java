@@ -8,13 +8,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.ibatis.annotations.Options;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.DecimalMin;
 import java.util.List;
 
 @RestController
@@ -37,5 +35,12 @@ public class SongController {
         return CommonResponse.createSuccess(songInfo);
     }
 
+    @GetMapping ("/getAllSongListInfoByUser")
+    @ApiOperation(value = "获取该用户下所有歌曲信息", notes = "获取该用户下所有歌曲信息")
+    public CommonResponse<List<SongVO>> getAllSongListInfoByUserId(@RequestParam @DecimalMin(value = "0", message = "所属任务ID不合法") Integer UserId, HttpServletRequest request){
+        log.info("---[歌曲接口-【获取该用户下所有歌曲信息】]：---");
+        List<SongVO> songInfo = songService.getAllSongListInfoByUserId(UserId);
+        return CommonResponse.createSuccess(songInfo);
+    }
 
 }

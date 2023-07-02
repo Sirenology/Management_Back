@@ -6,31 +6,32 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.apache.ibatis.annotations.Options;
 
 import java.io.Serializable;
 
 /**
  * 歌曲表
  *
- * @TableName song
+ * @TableName administrators
  */
-@TableName(value = "song")
+@TableName(value = "administrators")
 @Data
 @ToString
 @EqualsAndHashCode
-public class SongPO implements Serializable {
+public class ArtistPO implements Serializable {
     /**
-     * 歌曲id
+     * 歌手id
      */
     @TableId(type = IdType.AUTO)
-    private Integer songId;
-    
+    private Integer artistId;
+
     /**
-     * 歌曲名
+     * 歌手名
      */
-    private String title;
-    
+    private String artistName;
+    /**
+     * 歌手头像
+     */
 
-
+    private String artistAvater;
 }

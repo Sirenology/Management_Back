@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.management_backend.mappers.AlbumMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.management_backend.pojo.PO.AlbumPO">
+        <id property="playlistId" column="playlistId" jdbcType="INTEGER"/>
+        <result property="playlistName" column="playlistName" jdbcType="CHAR"/>
+        <result property="songListAvater" column="songListAvater" jdbcType="VARCHAR"/>
+
+    </resultMap>
+
+    <sql id="Base_Column_List">
+       albumId,playlistName,songListAvater
+    </sql>
+</mapper>

@@ -1,5 +1,6 @@
 package com.example.management_backend.pojo.PO;
 
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -11,26 +12,23 @@ import org.apache.ibatis.annotations.Options;
 import java.io.Serializable;
 
 /**
- * 歌曲表
- *
- * @TableName song
- */
-@TableName(value = "song")
+        * 用户表
+        *
+        * @TableName user
+        */
+@TableName(value = "user")
 @Data
 @ToString
 @EqualsAndHashCode
-public class SongPO implements Serializable {
-    /**
-     * 歌曲id
-     */
+public class UserPO implements Serializable {
     @TableId(type = IdType.AUTO)
-    private Integer songId;
-    
+    private Integer usernameId;
     /**
-     * 歌曲名
+     * 用户id
      */
-    private String title;
-    
-
-
+    private String username;
+    /**
+     * 用户姓名
+     */
+    private String userAvater;
 }
