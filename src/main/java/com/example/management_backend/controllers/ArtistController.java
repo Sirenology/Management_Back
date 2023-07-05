@@ -1,9 +1,9 @@
-package com.example.management_backend.controllers.song;
+package com.example.management_backend.controllers;
 
 import cn.hutool.log.Log;
 import com.example.management_backend.base.common.CommonResponse;
-import com.example.management_backend.pojo.VO.AlbumVO;
-import com.example.management_backend.services.album.AlbumService;
+import com.example.management_backend.pojo.VO.ArtistVO;
+import com.example.management_backend.services.artist.ArtistService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.ibatis.annotations.Options;
@@ -18,23 +18,24 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping("/album")
-@Api(tags = "专辑接口")
+@RequestMapping("/artist")
+@Api(tags = "歌手接口")
 @Validated
-public class AlbumController {
+public class ArtistController {
 
     //注入bing
     @Resource
-    private AlbumService albumService;
+    private ArtistService artistService;
 
     private static final Log log = Log.get();
 
-    @GetMapping("/getAllAlbumInfo")
-    @ApiOperation(value = "获取所有专辑信息", notes = "获取所有专辑信息")
-    public CommonResponse<List<AlbumVO>> getAllAlbumInfo() {
-        log.info("---[专辑接口-【获取所有专辑】]：---");
-        List<AlbumVO> albumInfo = albumService.getAllAlbumInfo();
-        return CommonResponse.createSuccess(albumInfo);
+    @GetMapping ("/getAllArtistInfo")
+    @ApiOperation(value = "获取所有歌手信息", notes = "获取所有歌手信息")
+    public CommonResponse<List<ArtistVO>> getAllArtistInfo(){
+        log.info("---[歌手接口-【获取所有歌手】]：---");
+        List<ArtistVO> artistInfo = artistService.getAllArtistInfo();
+        return CommonResponse.createSuccess(artistInfo);
     }
-}
 
+
+}

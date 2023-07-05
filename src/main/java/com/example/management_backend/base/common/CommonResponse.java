@@ -10,14 +10,14 @@ public class CommonResponse<T> {
 
 	private String message;
 
-	private T data;
+	private T resData;
 
-	public static <T> CommonResponse<T> createSuccess(T data) {
-		return CommonResponse.create(data, "success");
+	public static <T> CommonResponse<T> createSuccess(T resData) {
+		return CommonResponse.create(resData, "success");
 	}
 
-	public static <T> CommonResponse<T> createFail(T data) {
-		return CommonResponse.create(data, "fail");
+	public static <T> CommonResponse<T> createFail(T resData) {
+		return CommonResponse.create(resData, "fail");
 	}
 
 	public static <T> CommonResponse<T> success() {
@@ -32,11 +32,11 @@ public class CommonResponse<T> {
 		return CommonResponse.create(200, data, message);
 	}
 
-	public static <T> CommonResponse<T> create(Integer code, T data, String message) {
+	public static <T> CommonResponse<T> create(Integer code, T resData, String message) {
 		CommonResponse<T> commonResponse = new CommonResponse<>();
 		commonResponse.setCode(code);
 		commonResponse.setMessage(message);
-		commonResponse.setData(data);
+		commonResponse.setResData(resData);
 		return commonResponse;
 	}
 }

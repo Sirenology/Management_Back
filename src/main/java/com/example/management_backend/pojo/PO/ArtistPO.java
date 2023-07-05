@@ -1,5 +1,4 @@
 package com.example.management_backend.pojo.PO;
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -12,9 +11,9 @@ import java.io.Serializable;
 /**
  * 歌曲表
  *
- * @TableName administrators
+ * @TableName artist
  */
-@TableName(value = "administrators")
+@TableName(value = "artist")
 @Data
 @ToString
 @EqualsAndHashCode
@@ -23,15 +22,10 @@ public class ArtistPO implements Serializable {
      * 歌手id
      */
     @TableId(type = IdType.AUTO)
-    private Integer artistId;
+    private Integer artistid;
 
     /**
      * 歌手名
      */
-    private String artistName;
-    /**
-     * 歌手头像
-     */
-
-    private String artistAvater;
+    private String artistname;
 }

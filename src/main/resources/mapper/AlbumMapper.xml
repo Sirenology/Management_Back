@@ -5,13 +5,13 @@
 <mapper namespace="com.example.management_backend.mappers.AlbumMapper">
 
     <resultMap id="BaseResultMap" type="com.example.management_backend.pojo.PO.AlbumPO">
-        <id property="albumId" column="albumId" jdbcType="INTEGER"/>
+        <id property="albumid" column="albumid" jdbcType="INTEGER"/>
         <result property="title" column="title" jdbcType="VARCHAR"/>
-        <result property="albumAvater" column="albumAvater" jdbcType="VARCHAR"/>
+        <result property="albumavatar" column="albumavater" jdbcType="VARCHAR"/>
 
     </resultMap>
 
     <sql id="Base_Column_List">
-       albumId,title,albumAvater
+       albumid,title,albumavater
     </sql>
 </mapper>

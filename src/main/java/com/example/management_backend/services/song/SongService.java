@@ -1,7 +1,6 @@
 package com.example.management_backend.services.song;
 
 import com.example.management_backend.pojo.VO.SongVO;
-
 import java.util.List;
 
 /**
@@ -10,6 +9,7 @@ import java.util.List;
  */
 public interface SongService {
     List<SongVO> getAllSongInfo();
-    List<SongVO>getAllSongListInfoByUserId(Integer UserId);
+    List<SongVO> getAllSongInfoByUserId(Integer UserId);
+    List<SongVO> getAllSongByPlaylistId(Integer playlistId);
 
 }

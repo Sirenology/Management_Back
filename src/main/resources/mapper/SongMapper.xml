@@ -5,11 +5,23 @@
 <mapper namespace="com.example.management_backend.mappers.SongMapper">
 
     <resultMap id="BaseResultMap" type="com.example.management_backend.pojo.PO.SongPO">
-        <id property="songId" column="songId" jdbcType="INTEGER"/>
+        <id property="songid" column="songid" jdbcType="INTEGER"/>
         <result property="title" column="title" jdbcType="CHAR"/>
+        <result property="artist" column="artist" jdbcType="CHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        songId,title
+        songId,title,artist
     </sql>
+    <select id="selectSongByPlaylistId" resultType="com.example.management_backend.pojo.PO.SongPO">
+        SELECT
+            s.songid,
+            s.title,
+            s.artist
+        FROM
+            song s
+                LEFT JOIN playlist p ON s.playlistid = p.playlistid
+        WHERE
+            s.playlistid = #{playlistid};
+    </select>
 </mapper>

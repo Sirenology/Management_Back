@@ -21,25 +21,29 @@ public class SongServiceImpl implements SongService {
 
     @Override
     public List<SongVO> getAllSongInfo() {
-        log.info("正在获取所有歌曲信息。");
+        log.info("【getAllSongInfo】正在查询所有歌曲信息");
         List<SongPO> songPOList = SongMapper.selectList(null);
-        List<SongVO> songVOList = new ArrayList<>();
-        for (SongPO songPO : songPOList) {
-            SongVO songVO = new SongVO();
-            BeanUtils.copyProperties(songPO, songVO);
-             songVOList.add(songVO);
-        }
-        return songVOList;
+        return getSongVOList(songPOList);
     }
     @Override
-    public List<SongVO> getAllSongListInfoByUserId(Integer UserId){
+    public List<SongVO> getAllSongInfoByUserId(Integer UserId){
         log.info("正在进行getAllSongListInfoByUser操作。");
         List<SongPO> songPOList = SongMapper.selectList(null);
+        return getSongVOList(songPOList);
+    }
+    @Override
+    public List<SongVO> getAllSongByPlaylistId(Integer playlistId) {
+        log.info("正在获取{}歌单下所有歌曲信息。",playlistId);
+        List<SongPO> songPOList = SongMapper.selectSongByPlaylistId(playlistId);
+        return getSongVOList(songPOList);
+    }
+
+    private static List<SongVO> getSongVOList(List<SongPO> songPOList) {
         List<SongVO> songVOList = new ArrayList<>();
-        for (SongPO songPO : songPOList) {
-            SongVO songVO = new SongVO();
-            BeanUtils.copyProperties(songPO, songVO);
-            songVOList.add(songVO);
+        for (SongPO songPOListItem : songPOList) {
+            SongVO songVOListItem = new SongVO();
+            BeanUtils.copyProperties(songPOListItem, songVOListItem);
+            songVOList.add(songVOListItem);
         }
         return songVOList;
     }

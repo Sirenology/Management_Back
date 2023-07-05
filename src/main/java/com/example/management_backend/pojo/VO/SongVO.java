@@ -11,8 +11,9 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class SongVO {
     @ApiModelProperty(value = "歌曲id")
-    private Integer songId;
+    private Integer songid;
     @ApiModelProperty(value = "歌曲名")
     private String title;
-
+    @ApiModelProperty(value = "歌手")
+    private String artist;
 }

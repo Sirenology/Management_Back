@@ -2,16 +2,25 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.management_backend.mappers.AlbumMapper">
+<mapper namespace="com.example.management_backend.mappers.PlaylistMapper">
 
-    <resultMap id="BaseResultMap" type="com.example.management_backend.pojo.PO.AlbumPO">
-        <id property="playlistId" column="playlistId" jdbcType="INTEGER"/>
-        <result property="playlistName" column="playlistName" jdbcType="CHAR"/>
-        <result property="songListAvater" column="songListAvater" jdbcType="VARCHAR"/>
-
+    <resultMap id="BaseResultMap" type="com.example.management_backend.pojo.PO.PlaylistPO">
+        <id property="playlistid" column="playlistid" jdbcType="INTEGER"/>
+        <result property="playlistname" column="playlistname" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-       albumId,playlistName,songListAvater
+        playlistid,playlistname
     </sql>
+    <select id="selectPlaylistByUserId" resultType="com.example.management_backend.pojo.PO.PlaylistPO">
+        SELECT
+            p.playlistid,
+            p.playlistname
+        FROM
+            playlist p
+                LEFT JOIN user u ON p.usernameid = u.usernameid
+        WHERE
+            p.usernameid = #{userId};
+    </select>
+
 </mapper>

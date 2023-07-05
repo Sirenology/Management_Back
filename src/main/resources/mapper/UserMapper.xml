@@ -5,9 +5,9 @@
 <mapper namespace="com.example.management_backend.mappers.UserMapper">
 
     <resultMap id="BaseResultMap" type="com.example.management_backend.pojo.PO.UserPO">
-        <id property="usernameId" column="username_id" jdbcType="INTEGER"/>
+        <id property="usernameid" column="usernameid" jdbcType="INTEGER"/>
         <result property="username" column="username" jdbcType="CHAR"/>
-        <result property="userAvater" column="userAvater" jdbcType="VARCHAR"/>
+        <result property="useravatar" column="useravater" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">

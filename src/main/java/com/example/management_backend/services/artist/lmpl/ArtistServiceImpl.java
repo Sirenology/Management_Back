@@ -1,15 +1,7 @@
 package com.example.management_backend.services.artist.lmpl;
-
-
-
-
 import cn.hutool.log.Log;
-import com.example.management_backend.mappers.ArtistMapper;
-import com.example.management_backend.mappers.SongMapper;
 import com.example.management_backend.pojo.PO.ArtistPO;
-import com.example.management_backend.pojo.PO.SongPO;
 import com.example.management_backend.pojo.VO.ArtistVO;
-import com.example.management_backend.pojo.VO.SongVO;
 import com.example.management_backend.services.artist.ArtistService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -18,11 +10,8 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
 @Service
-public class ArtistServicelmpl implements ArtistService {
+public class ArtistServiceImpl implements ArtistService {
     private final static Log log = Log.get();
 
     @Resource

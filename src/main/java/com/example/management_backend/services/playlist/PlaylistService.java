@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface PlaylistService {
     List<PlaylistVO> getAllPlaylistInfo();
-    List<PlaylistVO> getCreateSongListInfo(Integer playlistId,String songListAvater,Integer userId);
+    void createPlaylist(Integer userId,String playlistname);
+    List<PlaylistVO> getAllPlaylistByUserId(Integer userId);
 }
