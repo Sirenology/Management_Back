@@ -1,5 +1,6 @@
 package com.example.management_backend.services.artist.lmpl;
 import cn.hutool.log.Log;
+import com.example.management_backend.mappers.ArtistMapper;
 import com.example.management_backend.pojo.PO.ArtistPO;
 import com.example.management_backend.pojo.VO.ArtistVO;
 import com.example.management_backend.services.artist.ArtistService;
@@ -15,12 +16,12 @@ public class ArtistServiceImpl implements ArtistService {
     private final static Log log = Log.get();
 
     @Resource
-    private com.example.management_backend.mappers.ArtistMapper ArtistMapper;
+    private ArtistMapper artistMapper;
 
     @Override
     public List<ArtistVO> getAllArtistInfo() {
         log.info("正在获取所有歌手信息。");
-        List<ArtistPO> artistPOList = ArtistMapper.selectList(null);
+        List<ArtistPO> artistPOList = artistMapper.selectList(null);
         List<ArtistVO> artistVOList = new ArrayList<>();
         for (ArtistPO artistPO : artistPOList) {
             ArtistVO artistVO = new ArtistVO();
@@ -28,5 +29,19 @@ public class ArtistServiceImpl implements ArtistService {
             artistVOList.add(artistVO);
         }
         return artistVOList;
+    }
+
+    @Override
+    public void deleteArtist(Integer artistId){
+        log.info("正在删除歌手{}信息。", artistId);
+        artistMapper.deleteById(artistId);
+    }
+
+    @Override
+    public void createArtist(String artist) {
+        log.info("管理员正在创建歌手:{}。",artist);
+        ArtistPO artistPO = new ArtistPO();
+        artistPO.setArtistname(artist);
+        artistMapper.insert(artistPO);
     }
 }

@@ -15,4 +15,6 @@ public class UserLoginVO {
     private String username;
     @ApiModelProperty(value = "登录信息")
     private String logininfo;
+    @ApiModelProperty(value = "管理员信息")
+    private String admininfo;
 }

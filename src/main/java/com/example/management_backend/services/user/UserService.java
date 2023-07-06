@@ -8,5 +8,6 @@ public interface UserService {
     List<UserVO> getAllUserInfo();
     String register(String userName, String password);
     UserLoginVO login(String userName, String password);
-    void deleteUser(String userName);
+    void deleteUser(Integer userId);
+    void modifyUser(Integer userId, String username);
 }

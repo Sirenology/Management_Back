@@ -7,7 +7,6 @@
     <resultMap id="BaseResultMap" type="com.example.management_backend.pojo.PO.UserPO">
         <id property="usernameid" column="usernameid" jdbcType="INTEGER"/>
         <result property="username" column="username" jdbcType="CHAR"/>
-        <result property="useravatar" column="useravater" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">

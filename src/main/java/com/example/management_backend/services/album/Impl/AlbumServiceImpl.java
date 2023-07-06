@@ -4,11 +4,8 @@ package com.example.management_backend.services.album.Impl;
 
 import cn.hutool.log.Log;
 import com.example.management_backend.mappers.AlbumMapper;
-import com.example.management_backend.mappers.SongMapper;
 import com.example.management_backend.pojo.PO.AlbumPO;
-import com.example.management_backend.pojo.PO.SongPO;
 import com.example.management_backend.pojo.VO.AlbumVO;
-import com.example.management_backend.pojo.VO.SongVO;
 import com.example.management_backend.services.album.AlbumService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -38,5 +35,20 @@ public class AlbumServiceImpl implements AlbumService{
             albumVOList.add(albumVO);
         }
         return albumVOList;
+    }
+
+    @Override
+    public void deleteAlbum(Integer albumId) {
+        log.info("正在删除专辑{}信息。", albumId);
+        AlbumMapper.deleteById(albumId);
+    }
+
+    @Override
+    public void modifyAlbum(Integer albumId, String albumName) {
+        log.info("正在修改专辑{}信息。", albumId);
+        AlbumPO albumPO = AlbumMapper.selectById(albumId);
+        log.info(albumPO.toString());
+        albumPO.setTitle(albumName);
+        AlbumMapper.updateById(albumPO);
     }
 }

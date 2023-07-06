@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ArtistService {
     List<ArtistVO> getAllArtistInfo();
+    void deleteArtist(Integer artistId);
+    void createArtist(String artist);
 }

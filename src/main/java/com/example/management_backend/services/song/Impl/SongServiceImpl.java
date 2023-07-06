@@ -38,6 +38,12 @@ public class SongServiceImpl implements SongService {
         return getSongVOList(songPOList);
     }
 
+    @Override
+    public void deleteSong(Integer songId) {
+        log.info("正在删除歌曲{}。", songId);
+        SongMapper.deleteById(songId);
+    }
+
     private static List<SongVO> getSongVOList(List<SongPO> songPOList) {
         List<SongVO> songVOList = new ArrayList<>();
         for (SongPO songPOListItem : songPOList) {

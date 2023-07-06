@@ -7,11 +7,10 @@
     <resultMap id="BaseResultMap" type="com.example.management_backend.pojo.PO.ArtistPO">
         <id property="artistid" column="artistid" jdbcType="INTEGER"/>
         <result property="artistname" column="artistname" jdbcType="VARCHAR"/>
-        <result property="artistavatar" column="artistavater" jdbcType="VARCHAR"/>
 
     </resultMap>
 
     <sql id="Base_Column_List">
-        artistid,artistname,artistavatar
+        artistid,artistname
     </sql>
 </mapper>

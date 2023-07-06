@@ -3,7 +3,9 @@ package com.example.management_backend.controllers;
 
 import cn.hutool.log.Log;
 import com.example.management_backend.base.common.CommonResponse;
+import com.example.management_backend.pojo.DTO.artist.ArtistDTO;
 import com.example.management_backend.pojo.DTO.common.CommonDTO;
+import com.example.management_backend.pojo.DTO.playlist.PlaylistDTO;
 import com.example.management_backend.pojo.VO.SongVO;
 import com.example.management_backend.services.song.SongService;
 import io.swagger.annotations.Api;
@@ -50,5 +52,11 @@ public class SongController {
         return CommonResponse.create(songList, "获取成功");
     }
 
+    @PostMapping("/deleteSong")
+    @ApiOperation(value = "删除歌曲", notes = "删除歌曲")
+    public CommonResponse<Void> deleteSong(@RequestBody CommonDTO commonDTO) {
+        songService.deleteSong(commonDTO.getSongId());
+        return CommonResponse.create(null, "SUCCESS");
+    }
 
 }

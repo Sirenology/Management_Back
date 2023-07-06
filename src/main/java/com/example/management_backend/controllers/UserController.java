@@ -3,21 +3,18 @@ package com.example.management_backend.controllers;
 
 import cn.hutool.log.Log;
 import com.example.management_backend.base.common.CommonResponse;
-import com.example.management_backend.pojo.DTO.user.UserDeleteDTO;
+import com.example.management_backend.pojo.DTO.common.CommonDTO;
 import com.example.management_backend.pojo.DTO.user.UserLoginDTO;
 import com.example.management_backend.pojo.DTO.user.UserRegisterDTO;
-import com.example.management_backend.pojo.PO.UserPO;
 import com.example.management_backend.pojo.VO.UserLoginVO;
 import com.example.management_backend.pojo.VO.UserVO;
 import com.example.management_backend.services.user.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.ibatis.annotations.Options;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -53,8 +50,15 @@ public class UserController {
 
     @PostMapping("/deleteUser")
     @ApiOperation(value = "删除用户", notes = "删除用户")
-    public CommonResponse<Void> deleteUser(@RequestBody UserDeleteDTO userDeleteDTO) {
-        userService.deleteUser(userDeleteDTO.getUserName());
-        return CommonResponse.create(null, "删除成功");
+    public CommonResponse<Void> deleteUser(@RequestBody CommonDTO commonDTO) {
+        userService.deleteUser(commonDTO.getUserId());
+        return CommonResponse.create(null, "SUCCESS");
+    }
+
+    @PostMapping("/modifyUser")
+    @ApiOperation(value = "修改用户名", notes = "修改用户名")
+    public CommonResponse<Void> modifyUser(@RequestBody CommonDTO commonDTO) {
+        userService.modifyUser(commonDTO.getUserId(),commonDTO.getUsername());
+        return CommonResponse.create(null, "SUCCESS");
     }
 }
