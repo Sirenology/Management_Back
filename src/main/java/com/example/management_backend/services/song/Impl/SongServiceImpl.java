@@ -53,4 +53,19 @@ public class SongServiceImpl implements SongService {
         }
         return songVOList;
     }
+
+    @Override
+    public List<SongVO> searchSong(String keyWord) {
+        log.info("正在查询{}", keyWord);
+        List<SongPO> songPOList = SongMapper.searchSong(keyWord);
+        log.info(songPOList.toString());
+        List<SongVO> songVOList = new ArrayList<>();
+        for (SongPO songPOListItem : songPOList) {
+            SongVO songVOListItem = new SongVO();
+            BeanUtils.copyProperties(songPOListItem, songVOListItem);
+            songVOList.add(songVOListItem);
+        }
+        return songVOList ;
+    }
+
 }

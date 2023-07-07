@@ -99,4 +99,19 @@ public class UserServiceImpl implements UserService {
         userPO.setUsername(username);
         UserMapper.updateById(userPO);
     }
+
+    @Override
+    public List<UserVO> searchUser(String keyWord) {
+        log.info("正在查询{}", keyWord);
+        List<UserPO> userPOList = UserMapper.searchUser(keyWord);
+        log.info(userPOList.toString());
+        List<UserVO> userVOList = new ArrayList<>();
+        for (UserPO userPOListItem :userPOList) {
+            UserVO userVOListItem = new UserVO();
+            BeanUtils.copyProperties(userPOListItem, userVOListItem);
+            userVOList.add(userVOListItem);
+        }
+        return userVOList ;
+    }
+
 }

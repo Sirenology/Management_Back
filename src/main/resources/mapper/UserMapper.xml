@@ -12,4 +12,9 @@
     <sql id="Base_Column_List">
         usernameId,username,userAvater
     </sql>
+
+    <select id="searchUser" resultType="com.example.management_backend.pojo.PO.UserPO">
+        select username,usernameid from user where username like '%${keyWord}%'
+    </select>
+
 </mapper>

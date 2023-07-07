@@ -7,4 +7,6 @@ public interface AlbumService {
     List<AlbumVO> getAllAlbumInfo();
     void deleteAlbum(Integer albumId);
     void modifyAlbum(Integer albumId, String albumName);
+
+    List<AlbumVO> searchAlbum(String keyWord);
 }

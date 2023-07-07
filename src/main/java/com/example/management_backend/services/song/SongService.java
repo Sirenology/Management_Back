@@ -12,4 +12,5 @@ public interface SongService {
     List<SongVO> getAllSongInfoByUserId(Integer UserId);
     List<SongVO> getAllSongByPlaylistId(Integer playlistId);
     void deleteSong(Integer songId);
+    List<SongVO> searchSong(String keyWord);
 }

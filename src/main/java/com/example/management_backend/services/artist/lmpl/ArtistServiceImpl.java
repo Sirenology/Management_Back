@@ -44,4 +44,19 @@ public class ArtistServiceImpl implements ArtistService {
         artistPO.setArtistname(artist);
         artistMapper.insert(artistPO);
     }
+
+    @Override
+    public List<ArtistVO> searchArtist(String keyWord) {
+        log.info("正在查询{}", keyWord);
+        List<ArtistPO> artistPOList = artistMapper.searchArtist(keyWord);
+        log.info(artistPOList.toString());
+        List<ArtistVO> artistVOList = new ArrayList<>();
+        for (ArtistPO artistPOListItem : artistPOList) {
+            ArtistVO artistVOListItem = new ArtistVO();
+            BeanUtils.copyProperties(artistPOListItem, artistVOListItem);
+            artistVOList.add(artistVOListItem);
+        }
+        return artistVOList ;
+    }
+
 }

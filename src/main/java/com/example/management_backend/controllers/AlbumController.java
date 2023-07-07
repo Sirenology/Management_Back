@@ -3,6 +3,7 @@ package com.example.management_backend.controllers;
 import cn.hutool.log.Log;
 import com.example.management_backend.base.common.CommonResponse;
 import com.example.management_backend.pojo.DTO.common.CommonDTO;
+import com.example.management_backend.pojo.DTO.search.SearchDTO;
 import com.example.management_backend.pojo.VO.AlbumVO;
 import com.example.management_backend.services.album.AlbumService;
 import io.swagger.annotations.Api;
@@ -48,5 +49,15 @@ public class AlbumController {
         albumService.modifyAlbum(commonDTO.getAlbumId(),commonDTO.getAlbumName());
         return CommonResponse.create(null, "SUCCESS");
     }
+
+
+    @PostMapping("/searchAlbum")
+    @ApiOperation(value = "搜索专辑", notes = "搜索专辑")
+    public CommonResponse<List<AlbumVO>> searchAlbum(@RequestBody SearchDTO searchDTO) {
+        List<AlbumVO> albumVOList= albumService.searchAlbum(searchDTO.getKeyWord());
+        return CommonResponse.create(albumVOList, "SUCCESS");
+    }
+
+
 }
 

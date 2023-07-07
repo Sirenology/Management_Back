@@ -4,6 +4,7 @@ package com.example.management_backend.controllers;
 import cn.hutool.log.Log;
 import com.example.management_backend.base.common.CommonResponse;
 import com.example.management_backend.pojo.DTO.common.CommonDTO;
+import com.example.management_backend.pojo.DTO.search.SearchDTO;
 import com.example.management_backend.pojo.DTO.user.UserLoginDTO;
 import com.example.management_backend.pojo.DTO.user.UserRegisterDTO;
 import com.example.management_backend.pojo.VO.UserLoginVO;
@@ -60,5 +61,12 @@ public class UserController {
     public CommonResponse<Void> modifyUser(@RequestBody CommonDTO commonDTO) {
         userService.modifyUser(commonDTO.getUserId(),commonDTO.getUsername());
         return CommonResponse.create(null, "SUCCESS");
+    }
+
+    @PostMapping("/searchUser")
+    @ApiOperation(value = "搜索用户", notes = "搜索用户")
+    public CommonResponse<List<UserVO>> searchUser(@RequestBody SearchDTO searchDTO) {
+        List<UserVO> userVOList= userService.searchUser(searchDTO.getKeyWord());
+        return CommonResponse.create(userVOList, "SUCCESS");
     }
 }

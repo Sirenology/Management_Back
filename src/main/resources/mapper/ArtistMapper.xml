@@ -13,4 +13,8 @@
     <sql id="Base_Column_List">
         artistid,artistname
     </sql>
+    <select id="searchArtist" resultType="com.example.management_backend.pojo.PO.ArtistPO">
+        select artistname,artistid from artist where artistname like '%${keyWord}%'
+    </select>
+
 </mapper>

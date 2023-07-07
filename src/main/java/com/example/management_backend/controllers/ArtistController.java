@@ -4,6 +4,7 @@ import cn.hutool.log.Log;
 import com.example.management_backend.base.common.CommonResponse;
 import com.example.management_backend.pojo.DTO.artist.ArtistDTO;
 import com.example.management_backend.pojo.DTO.common.CommonDTO;
+import com.example.management_backend.pojo.DTO.search.SearchDTO;
 import com.example.management_backend.pojo.VO.ArtistVO;
 import com.example.management_backend.services.artist.ArtistService;
 import io.swagger.annotations.Api;
@@ -50,4 +51,13 @@ public class ArtistController {
         artistService.createArtist(artistDTO.getArtist());
         return CommonResponse.create(null, "创建成功");
     }
+
+
+    @PostMapping("/searchArtist")
+    @ApiOperation(value = "搜索歌手", notes = "搜索歌手")
+    public CommonResponse<List<ArtistVO>> searchArtist(@RequestBody SearchDTO searchDTO) {
+        List<ArtistVO> artistVOList= artistService.searchArtist(searchDTO.getKeyWord());
+        return CommonResponse.create(artistVOList, "SUCCESS");
+    }
+
 }

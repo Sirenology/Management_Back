@@ -10,4 +10,7 @@ public interface UserService {
     UserLoginVO login(String userName, String password);
     void deleteUser(Integer userId);
     void modifyUser(Integer userId, String username);
+
+    List<UserVO> searchUser(String keyWord);
+
 }

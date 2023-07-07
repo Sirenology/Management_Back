@@ -6,6 +6,7 @@ import com.example.management_backend.base.common.CommonResponse;
 import com.example.management_backend.pojo.DTO.artist.ArtistDTO;
 import com.example.management_backend.pojo.DTO.common.CommonDTO;
 import com.example.management_backend.pojo.DTO.playlist.PlaylistDTO;
+import com.example.management_backend.pojo.DTO.search.SearchDTO;
 import com.example.management_backend.pojo.VO.SongVO;
 import com.example.management_backend.services.song.SongService;
 import io.swagger.annotations.Api;
@@ -58,5 +59,13 @@ public class SongController {
         songService.deleteSong(commonDTO.getSongId());
         return CommonResponse.create(null, "SUCCESS");
     }
+
+    @PostMapping("/searchSong")
+    @ApiOperation(value = "搜索歌曲", notes = "搜索歌曲")
+    public CommonResponse<List<SongVO>> searchAlbum(@RequestBody SearchDTO searchDTO) {
+        List<SongVO> songVOList= songService.searchSong(searchDTO.getKeyWord());
+        return CommonResponse.create(songVOList, "SUCCESS");
+    }
+
 
 }

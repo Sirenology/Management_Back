@@ -24,4 +24,9 @@
         WHERE
             s.playlistid = #{playlistid};
     </select>
+
+    <select id="searchSong" resultType="com.example.management_backend.pojo.PO.SongPO">
+        select title,songid from song where title like '%${keyWord}%'
+    </select>
+
 </mapper>

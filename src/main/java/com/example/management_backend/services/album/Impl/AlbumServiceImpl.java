@@ -51,4 +51,20 @@ public class AlbumServiceImpl implements AlbumService{
         albumPO.setTitle(albumName);
         AlbumMapper.updateById(albumPO);
     }
+
+    @Override
+    public List<AlbumVO> searchAlbum(String keyWord) {
+        log.info("正在查询{}", keyWord);
+        List<AlbumPO> albumPOList = AlbumMapper.searchAlbum(keyWord);
+        log.info(albumPOList.toString());
+        List<AlbumVO> albumVOList = new ArrayList<>();
+        for (AlbumPO albumPOListItem : albumPOList) {
+            AlbumVO albumVOListItem = new AlbumVO();
+            BeanUtils.copyProperties(albumPOListItem, albumVOListItem);
+            albumVOList.add(albumVOListItem);
+        }
+        return albumVOList ;
+    }
+
+
 }

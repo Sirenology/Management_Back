@@ -8,4 +8,5 @@ public interface ArtistService {
     List<ArtistVO> getAllArtistInfo();
     void deleteArtist(Integer artistId);
     void createArtist(String artist);
+    List<ArtistVO> searchArtist(String keyWord);
 }

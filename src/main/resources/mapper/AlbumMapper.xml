@@ -13,4 +13,9 @@
     <sql id="Base_Column_List">
        albumid,title
     </sql>
+
+    <select id="searchAlbum" resultType="com.example.management_backend.pojo.PO.AlbumPO">
+        select title,albumid from album where title like '%${keyWord}%'
+    </select>
+
 </mapper>

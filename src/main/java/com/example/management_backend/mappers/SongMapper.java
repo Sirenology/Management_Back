@@ -11,4 +11,5 @@ import java.util.List;
 
 public interface SongMapper extends BaseMapper<SongPO> {
     List<SongPO> selectSongByPlaylistId(Integer playlistId);
+    List<SongPO> searchSong(String keyWord);
 }
